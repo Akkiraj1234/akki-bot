@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS leetcode (
 )
 ''')
 conn.commit()
+print("✅ PostgreSQL tables ensured.")
 
 # ——— Bot Setup ———
 intents = discord.Intents.default()
@@ -32,8 +33,9 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 # ——— URL Validator ———
 def is_valid_url(url: str, pattern: str):
-    if not re.match(pattern, url):
-        return False
+    is_valid = re.match(pattern, url) is not None
+    print(f"[URL CHECK] {url} → {'VALID' if is_valid else 'INVALID'}")
+    return is_valid
 
 # ——— Events ———
 @bot.event
@@ -43,6 +45,7 @@ async def on_ready():
 # ——— GitHub Commands ———
 @bot.command()
 async def setgithub(ctx, url: str = None):
+    print(f"[COMMAND] !setgithub by {ctx.author} | URL: {url}")
     if not url or not is_valid_url(url, r'^https://github\.com/[A-Za-z0-9_-]+/?$'):
         return await ctx.send('❌ Invalid GitHub URL. Format: `https://github.com/username`')
 
@@ -51,11 +54,13 @@ async def setgithub(ctx, url: str = None):
         (str(ctx.author.id), url)
     )
     conn.commit()
+    print(f"[DATABASE] GitHub URL saved for {ctx.author}")
     await ctx.send(f'✅ GitHub saved: {url}')
 
 @bot.command()
 async def github(ctx, member: discord.Member = None):
     user = member or ctx.author
+    print(f"[COMMAND] !github by {ctx.author} | Target: {user}")
     cursor.execute('SELECT url FROM github WHERE user_id = %s', (str(user.id),))
     row = cursor.fetchone()
 
@@ -67,10 +72,11 @@ async def github(ctx, member: discord.Member = None):
 # ——— LeetCode Commands ———
 @bot.command()
 async def setleetcode(ctx, url: str = None):
+    print(f"[COMMAND] !setleetcode by {ctx.author} | URL: {url}")
     pattern = r'^https://leetcode\.com(/u)?/[A-Za-z0-9_-]+/?$'
     if not url or not is_valid_url(url, pattern):
         return await ctx.send(
-            '❌ Invalid LeetCode URL.\nValid formats:\n- `https://leetcode.com/username`\n- `https://leetcode.com/u/username/`'
+            '❌ Invalid LeetCode URL.\nValid formats:\n- https://leetcode.com/username\n- https://leetcode.com/u/username/'
         )
 
     cursor.execute(
@@ -78,11 +84,13 @@ async def setleetcode(ctx, url: str = None):
         (str(ctx.author.id), url)
     )
     conn.commit()
+    print(f"[DATABASE] LeetCode URL saved for {ctx.author}")
     await ctx.send(f'✅ LeetCode saved: {url}')
 
 @bot.command()
 async def leetcode(ctx, member: discord.Member = None):
     user = member or ctx.author
+    print(f"[COMMAND] !leetcode by {ctx.author} | Target: {user}")
     cursor.execute('SELECT url FROM leetcode WHERE user_id = %s', (str(user.id),))
     row = cursor.fetchone()
 
