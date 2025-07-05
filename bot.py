@@ -1,7 +1,6 @@
 # bot.py
 import os
 import re
-import requests
 import psycopg2
 import discord
 from discord.ext import commands
@@ -34,11 +33,6 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # ——— URL Validator ———
 def is_valid_url(url: str, pattern: str):
     if not re.match(pattern, url):
-        return False
-    try:
-        res = requests.get(url, timeout=5)
-        return res.status_code == 200
-    except:
         return False
 
 # ——— Events ———
