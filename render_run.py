@@ -1,18 +1,17 @@
-from threading import Thread
 import asyncio
+from server.app import start_server
+from akkibot.bot import run_bot_main
 
-print("🚀 Starting AkkiBot system...")
+async def main():
+    # Run both server and bot concurrently
+    server_task = asyncio.create_task(start_server())
+    bot_task = asyncio.create_task(run_bot_main())
 
-# === Run server ===
-def run_server():
-    import server.app  # Import only inside to avoid threading issues
-    asyncio.run(server.app.start_server())
+    await asyncio.gather(server_task, bot_task)
 
-# === Run bot ===
-def run_bot():
-    from akkibot.bot import run_bot_main
-    run_bot_main()
-
-# === Start both ===
-Thread(target=run_server).start()
-run_bot()  # Runs in main thread
+if __name__ == "__main__":
+    print("🚀 Starting AkkiBot system...")
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("🛑 AkkiBot system shutdown.")

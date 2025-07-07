@@ -122,3 +122,13 @@ async def leetcode(ctx, member: discord.Member = None):
         await ctx.send(f'🧠 **{user.display_name}**’s LeetCode: {row[0]}')
     else:
         await ctx.send(f'⚠️ {user.display_name} has not set a LeetCode profile.')
+
+
+# ——— Main bot startup ———
+async def run_bot_main():
+    await bot.start(os.environ['DISCORD_TOKEN'])
+
+# If you ever want to run standalone:
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(run_bot_main())
