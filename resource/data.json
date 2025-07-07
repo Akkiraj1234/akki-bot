@@ -1,12 +1,13 @@
 {
   "botName": "Akki Bot",
-  "botDesc": "I’m a helpful bot made by Akki to simplify tasks, automate stuff, and be cute. 😎",
+  "botDesc": "I'm a smart Discord bot built by Akki to automate tasks like storing user data and running cool commands. You can fork me, host your own version, or check out the docs. I'm as chill and useful as Akki himself. 😎",
   "botLogo": {
-    "path": "https://github.com/Akkiraj1234/akki-bot/blob/main/resource/logo.jpeg?raw=true",
+    "path": "resource/logo.jpeg",
     "alt": "Akki’s Bot Logo",
     "width": 120,
     "height": 120
   },
+  "buttonLink":"https://github.com/Akkiraj1234/akki-bot/docs/setup_guide.md",
   "stats": [
     { "key": "RAM", "value": "< 215 MB" },
     { "key": "Bandwidth", "value": "1.3 GB/mo" },
@@ -56,15 +57,15 @@
     { "cmd": "!uptime", "desc": "Show how long bot has been running" },
     { "cmd": "!botstats", "desc": "Show version, server count, and RAM usage" }
   ],
-  "links": {
-    "email": "mailto:akhandraj402@gmail.com",
-    "github source": "https://github.com/Akkiraj1234/akki-bot",
-    "docs": "https://github.com/Akkiraj1234/akki-bot/docs"
-  },
+  "links": [
+    { "name": "email", "url": "mailto:akhandraj402@gmail.com" },
+    { "name": "github source", "url": "https://github.com/Akkiraj1234/akki-bot" },
+    { "name": "docs", "url": "https://github.com/Akkiraj1234/akki-bot/docs/setup_guide.md" }
+  ],
   "socials": [
     { "icon": "logo-instagram", "url": "https://instagram.com/its__intp" },
     { "icon": "logo-reddit", "url": "https://www.reddit.com/user/its__intp/" },
     { "icon": "logo-github", "url": "https://github.com/Akkiraj1234" },
-    { "icon": "home-outline", "url": "https://akkiofficial.site"}
+    { "icon": "home-outline", "url": "https://akkiofficial.com"}
   ]
 }

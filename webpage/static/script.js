@@ -1,4 +1,4 @@
-fetch("https://raw.githubusercontent.com/Akkiraj1234/akki-bot/refs/heads/main/resource/data.json")
+fetch("resource/data.json")
   .then((res) => {
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     return res.json();
@@ -11,13 +11,15 @@ fetch("https://raw.githubusercontent.com/Akkiraj1234/akki-bot/refs/heads/main/re
       socials,
       features,
       commands,
-      links: { invite, email, github, site },
-      stats
+      links,
+      stats,
+      buttonLink
     } = data;
 
     // Header
     document.getElementById("bot-name").textContent = botName;
     document.getElementById("bot-desc").textContent = botDesc;
+
     const logoDiv = document.getElementById("logo");
     logoDiv.innerHTML = "";
     const img = document.createElement("img");
@@ -28,8 +30,9 @@ fetch("https://raw.githubusercontent.com/Akkiraj1234/akki-bot/refs/heads/main/re
     img.style.objectFit = "contain";
     img.style.borderRadius = "50%";
     logoDiv.appendChild(img);
+
     document.getElementById("invite-btn")
-      .addEventListener("click", () => window.open(invite, "_blank"));
+      .addEventListener("click", () => window.open(buttonLink, "_blank"));
 
     // Socials
     const socialsContainer = document.getElementById("socials-container");
@@ -61,7 +64,7 @@ fetch("https://raw.githubusercontent.com/Akkiraj1234/akki-bot/refs/heads/main/re
       flist.appendChild(li);
     });
 
-    // Commands (split ! + name, then description)
+    // Commands
     const clist = document.getElementById("commands-list");
     clist.innerHTML = "";
     commands.forEach(({ cmd, desc }) => {
@@ -85,9 +88,21 @@ fetch("https://raw.githubusercontent.com/Akkiraj1234/akki-bot/refs/heads/main/re
       clist.appendChild(row);
     });
 
-    // Footer links
-    document.getElementById("email-link").href = email;
-    document.getElementById("github-link").href = github;
-    document.getElementById("site-link").href = site;
+    // Footer project info links (from links array)
+    const footerProjectinfodiv = document.getElementById("project-info-list");
+    footerProjectinfodiv.innerHTML = "";
+    links.forEach(({ name, url }, i, arr) => {
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.innerHTML = name;
+      footerProjectinfodiv.appendChild(a);
+
+      // Add dot separator if not last
+      if (i < arr.length - 1) {
+        footerProjectinfodiv.appendChild(document.createTextNode(" · "));
+      }
+    });
+
   })
-  .catch((err) => console.error("Failed to load data.json:", err));
+  .catch((err) => console.error("❌ Failed to load data.json:", err));
