@@ -1,4 +1,4 @@
-fetch("https://github.com/Akkiraj1234/akki-bot/blob/main/resource/data.json?raw=true")
+fetch("https://raw.githubusercontent.com/Akkiraj1234/akki-bot/refs/heads/main/resource/data.json")
   .then((res) => {
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     return res.json();
