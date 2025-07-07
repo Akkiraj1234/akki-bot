@@ -7,7 +7,7 @@
     "width": 120,
     "height": 120
   },
-  "buttonLink":"https://github.com/Akkiraj1234/akki-bot/docs/setup_guide.md",
+  "buttonLink": "https://github.com/Akkiraj1234/akki-bot/blob/main/docs/setup_guide.md",
   "stats": [
     { "key": "RAM", "value": "< 215 MB" },
     { "key": "Bandwidth", "value": "1.3 GB/mo" },
@@ -60,7 +60,7 @@
   "links": [
     { "name": "email", "url": "mailto:akhandraj402@gmail.com" },
     { "name": "github source", "url": "https://github.com/Akkiraj1234/akki-bot" },
-    { "name": "docs", "url": "https://github.com/Akkiraj1234/akki-bot/docs/setup_guide.md" }
+    { "name": "docs", "url": "https://github.com/Akkiraj1234/akki-bot/blob/main/docs/setup_guide.md" }
   ],
   "socials": [
     { "icon": "logo-instagram", "url": "https://instagram.com/its__intp" },
