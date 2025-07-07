@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Akki’s Bot Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Ionicons -->
+  <script type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+  </script>
+  <script nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+  </script>
+</head>
+<body>
+
+  <div class="window-card">
+    <!-- 1. Header Section -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo" id="logo">LOGO</div>
+        <div class="socials" id="socials-container"></div>
+      </div>
+      <div class="header-right">
+        <h1 id="bot-name">…</h1>
+        <p id="bot-desc">…</p>
+        <button id="invite-btn" class="btn">Set Up Bot</button>
+      </div>
+    </header>
+
+    <!-- 2. Stats Section -->
+    <section class="stats" id="stats-container">
+      <!-- JS injects .stat-item divs here -->
+    </section>
+
+    <!-- 3. Features & Commands -->
+    <section class="main-grid">
+      <div class="features card">
+        <h2>Features</h2>
+        <ul id="features-list">
+          <!-- JS injects <li>…</li> here -->
+        </ul>
+      </div>
+      <div class="commands card">
+        <h2>Commands</h2>
+        <div id="commands-list" class="scroll-area">
+          <!-- JS injects <div class="command-row">…</div> here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Footer -->
+    <footer class="footer">
+      <a id="email-link">📧 Email Me</a> ·
+      <a id="github-link">🌐 GitHub</a> ·
+      <a id="site-link">🏠 Official Site</a>
+      <p>© 2025 Akki. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
